@@ -1,0 +1,30 @@
+<h2>Produkty</h2>
+
+<button (click)="toggleProducts()">
+    {{ pokazujProdukty ? 'Ukryj produkty' : 'Pokaż produkty' }}
+  </button>
+
+<table *ngIf="pokazujProdukty" class="product-table">
+  <tr>
+    <th>Nazwa</th>
+    <th>Cena</th>
+    <th>Data Utworzenia</th>
+    <th>Liczba sztuk w koszyku</th>
+    <th>Dodaj Do Koszyka</th>
+  </tr>
+  <tr *ngFor="let product of produkty" [ngClass]="{'promocja': product.czyPromocja}">
+    <td>{{ product.nazwa }}</td>
+    <td>{{ product.cena }} zł</td>
+    <td>{{ product.dataUtworzenia | date: 'dd.MM.yyyy'}} r.</td>
+    <td>{{ product.liczbaSztuk }}</td>
+    <td>
+      <button (click)="dodajPrzedmiotDoKoszyka(product)">Dodaj do koszyka</button>
+    </td>
+  </tr>
+</table>
+
+<app-koszyk [koszyk]="koszyk"></app-koszyk>
+
+<button (click)="wyczyscKoszyk()">
+    <i class="trash"></i>X
+  </button>

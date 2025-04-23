@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ProductComponent } from './product/product.component';
+import { KoszykComponent } from './koszyk/koszyk.component';
 
 @Component({
   selector: 'app-root',
